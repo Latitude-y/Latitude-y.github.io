@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>Git学习（一）</title>
+      <link href="/2022/07/02/Git(1)/"/>
+      <url>/2022/07/02/Git(1)/</url>
+      
+        <content type="html"><![CDATA[<blockquote><h2 id="远程数据库和本地数据库"><a href="#远程数据库和本地数据库" class="headerlink" title="远程数据库和本地数据库"></a>远程数据库和本地数据库</h2><blockquote><ul><li><p><strong>远程数据库</strong>：配有专用的服务器，为了多人共享而建立的数据库。</p></li><li><p><strong>本地数据库</strong>：为了方便用户个人使用，在自己的机器上配置的数据库。</p></li></ul></blockquote></blockquote><blockquote><h2 id="修改记录的提交"><a href="#修改记录的提交" class="headerlink" title="修改记录的提交"></a>修改记录的提交</h2><blockquote><p>要把文件或目录的添加和变更保存到数据库，就需要进行提交。执行提交后，数据库中会生成上次提交的状态与当前状态的差异记录（也被称为revision）。</p><p><img src="/pictures/Git/1.png"><strong>注意</strong></p><ul><li><p>不同类别的修改 (如：Bug修复和功能添加) 要尽量分开提交，以方便以后从历史记录里查找特定的修改内容。</p></li><li><p>查看其他人提交的修改内容或自己的历史记录的时候，提交信息是需要用到的重要资料。所以请用心填写修改内容的提交信息，以方便别人理解。<br>以下是Git的标准注解：</p></li><li><pre><code class="java">第1行：提交修改内容的摘要第2行：空行第3行以后：修改的理由</code></pre></li></ul></blockquote></blockquote><blockquote><h2 id="工作树和索引"><a href="#工作树和索引" class="headerlink" title="工作树和索引"></a>工作树和索引</h2><p>Git在执行提交的时候，不是直接将工作树的状态保存到数据库，而是将设置在中间<strong>索引</strong>区域的状态保存到数据库。</p><p>因此，要提交文件，首先需要把文件加入到索引区域中。</p><p><img src="/pictures/Git/2.png"></p></blockquote>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>目标和</title>
+      <link href="/2022/06/28/%E7%9B%AE%E6%A0%87%E5%92%8C/"/>
+      <url>/2022/06/28/%E7%9B%AE%E6%A0%87%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<blockquote><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote><p>给你一个整数数组 nums 和一个整数 target 。</p><p>向数组中的每个整数前添加 ‘+’ 或 ‘-‘ ，然后串联起所有整数，可以构造一个 表达式 ：</p><ul><li>例如，nums &#x3D; [2, 1] ，可以在 2 之前添加 ‘+’ ，在 1 之前添加 ‘-‘ ，然后串联起来得到表达式 “+2-1” 。<br>返回可以通过上述方法构造的、运算结果等于 target 的不同 表达式 的数目。</li></ul><p>示例 1：</p><p>输入：nums &#x3D; [1,1,1,1,1], target &#x3D; 3<br>输出：5<br>解释：一共有 5 种方法让最终目标和为 3 。<br>-1 + 1 + 1 + 1 + 1 &#x3D; 3<br>+1 - 1 + 1 + 1 + 1 &#x3D; 3<br>+1 + 1 - 1 + 1 + 1 &#x3D; 3<br>+1 + 1 + 1 - 1 + 1 &#x3D; 3<br>+1 + 1 + 1 + 1 - 1 &#x3D; 3</p><p>示例 2：</p><p>输入：nums &#x3D; [1], target &#x3D; 1<br>输出：1</p><p>力扣链接：<a href="https://leetcode.cn/problems/target-sum/">https://leetcode.cn/problems/target-sum/</a></p></blockquote></blockquote>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>最后一块石头的重量</title>
       <link href="/2022/06/26/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F/"/>
       <url>/2022/06/26/%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F/</url>
