@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>0-1背包和完全背包总结</title>
+      <link href="/2022/07/12/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/"/>
+      <url>/2022/07/12/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/</url>
+      
+        <content type="html"><![CDATA[<blockquote><h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="/pictures/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/4.png"></p></blockquote><blockquote><h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><p>我这里把目前学到的背包问题做了下大致归纳，如下：</p><blockquote><h3 id="0-1背包"><a href="#0-1背包" class="headerlink" title="0-1背包"></a>0-1背包</h3><ol><li><p><strong>组合类问题</strong></p><p>一般问题求解：有几种方式？有几种情况？</p><p>此时递推公式为：</p><p><code>dp[j]+=dp[j-weight[i]]</code></p><p>初始化一般为：</p><p><code>dp[0]=1</code></p></li><li><p><strong>纯0-1背包问题（我称为‘中间态问题’）</strong></p><p>一般问题求解：是否能？或者dp数组某个下标下的值？</p><p>此时递推公式一般为：</p><p><code>dp[j]=max(dp[j],dp[j-weight[i]]+value[i])</code></p><p>一般都初始化为0，但还是要视具体题目而定。</p></li></ol><h4 id="一维数组和二维数组"><a href="#一维数组和二维数组" class="headerlink" title="一维数组和二维数组"></a>一维数组和二维数组</h4><ol><li><p><strong>二维数组</strong></p><p>遍历背包和遍历物品顺序可变，因为每一次存放的dp值不会被覆盖。</p></li><li><p><strong>一维数组</strong></p><p>遍历背包和遍历物品顺序不可变，首先因为每次都在修正历史状态的dp值，会被覆盖掉，其次内层遍历背包容量使倒叙遍历，如果放外层，相当于每次只放一个物品到背包中。</p><p>为什么倒序遍历背包容量？因为0-1背包中物品个数有限，可以确保将每个物品只放入背包一次。</p></li></ol></blockquote></blockquote><blockquote><blockquote><h3 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h3><p>完全背包问题中，物品有无限个，可以被放入多次，所以此时<strong>遍历背包是正序遍历。</strong></p><ol><li><p><strong>纯完全背包问题</strong></p><p>一般问题求解如0-1背包，不再赘述。</p><p>此时递推公式一般为：</p><p><code>dp[j]=max(dp[j],dp[j-weight[i]]+value[i])</code></p><p>一般都初始化为0，但还是要视具体题目而定。</p></li><li><p><strong>组合类问题</strong></p><p>此时递推公式为：</p><p><code>dp[j]+=dp[j-weight[i]]</code></p><p>初始化一般为：</p><p><code>dp[0]=1</code></p><ul><li><p>组合数</p><p>组合数表示相同的数值不同的排序是同一种情况，此时<strong>先遍历物品再遍历背包。</strong></p></li><li><p>排列数</p><p>排列数表示数值相同但排列结果不同，情况也不同，此时<strong>先遍历背包再遍历物品。</strong></p></li></ul></li></ol></blockquote></blockquote><p><img src="/pictures/%E6%9A%91%E5%81%87%E8%AE%A1%E5%88%92/4.jpg"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>杜绝摆烂 从我做起༼༎ຶᴗ༎ຶ༽</title>
       <link href="/2022/07/11/%E6%9A%91%E5%81%87%E8%AE%A1%E5%88%92/"/>
       <url>/2022/07/11/%E6%9A%91%E5%81%87%E8%AE%A1%E5%88%92/</url>
