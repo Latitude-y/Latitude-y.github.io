@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>0-1背包问题 | 你的友好邻居(｡•﹃•｡)</title><meta name="keywords" content="音乐 代码 摄影 生活"><meta name="author" content="Latitude_x"><meta name="copyright" content="Latitude_x"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="问题描述   有N件物品和⼀个最多能被重量为W 的背包。第i件物品的重量是weight[i]，得到的价值是value[i]。每件物品只能⽤⼀次，求解将哪些物品装⼊背包⾥物品价值总和最⼤。    举例背包最大重量：4     重量 价值    物品0 1 15   物品1 3 20   物品2 4 30       推导思路 1. 确定DP数组含义dp[i][j]:从下标为[0-i]的物品中任意取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0-1背包问题">
+<meta property="og:url" content="http://example.com/2022/06/21/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="你的友好邻居(｡•﹃•｡)">
+<meta property="og:description" content="问题描述   有N件物品和⼀个最多能被重量为W 的背包。第i件物品的重量是weight[i]，得到的价值是value[i]。每件物品只能⽤⼀次，求解将哪些物品装⼊背包⾥物品价值总和最⼤。    举例背包最大重量：4     重量 价值    物品0 1 15   物品1 3 20   物品2 4 30       推导思路 1. 确定DP数组含义dp[i][j]:从下标为[0-i]的物品中任意取">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/au6.jpg">
+<meta property="article:published_time" content="2022-06-21T13:15:25.428Z">
+<meta property="article:modified_time" content="2022-06-23T06:17:25.852Z">
+<meta property="article:author" content="Latitude_x">
+<meta property="article:tag" content="音乐 代码 摄影 生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/au6.jpg"><link rel="shortcut icon" href="/img/horse.png"><link rel="canonical" href="http://example.com/2022/06/21/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/-apple-system,%20BlinkMacSystemFont,%20%22Segoe%20UI%22,%20%22Helvetica%20Neue%22,%20Lato,%20Roboto,%20%22PingFang%20SC%22,%20%22Microsoft%20JhengHei%22,%20%22Microsoft%20YaHei%22,%20sans-serif" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '0-1背包问题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-23 14:17:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lhr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/au6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">你的友好邻居(｡•﹃•｡)</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">0-1背包问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-21T13:15:25.428Z" title="发表于 2022-06-21 21:15:25">2022-06-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-23T06:17:25.852Z" title="更新于 2022-06-23 14:17:25">2022-06-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">920</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1></blockquote>
+<blockquote>
+<blockquote>
+<p><strong>有N件物品和⼀个最多能被重量为W 的背包。第i件物品的重量是weight[i]，得到的价值是value[i]。每件物品只能⽤⼀次，求解将哪些物品装⼊背包⾥物品价值总和最⼤。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><strong>背包最大重量：4</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">重量</th>
+<th align="center">价值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">物品0</td>
+<td align="center">1</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center">物品1</td>
+<td align="center">3</td>
+<td align="center">20</td>
+</tr>
+<tr>
+<td align="center">物品2</td>
+<td align="center">4</td>
+<td align="center">30</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p><img src="/pictures/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/1.png" alt="1"></p>
+<hr>
+<blockquote>
+<h2 id="推导思路"><a href="#推导思路" class="headerlink" title="推导思路"></a>推导思路</h2><blockquote>
+<p><strong>1. 确定DP数组含义</strong><br><strong>dp[i][j]</strong>:从下标为[0-i]的物品中任意取物品，放入容量为j的背包中，价值总和最大为多少。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>2. 确定递推公式</strong><br>dp[i][j]主要由两个方向推导而来:</p>
+<ul>
+<li><strong>dp[i-1][j]</strong>:当背包容量为j时，不放物品i时的最大价值，此时dp[i][j]&#x3D;dp[i-1][j]。</li>
+<li><strong>dp[i-1][j-weight[i]]</strong>:当背包容量为j-weight[i]时，不放物品i时的最大价值，此时dp[i][j]&#x3D;dp[i-1][j-weight[i]]+value[i]。</li>
+</ul>
+<p>所以递归公式为：<br><code>dp[i][j]=max(dp[i-1][j],dp[i-1][j-wight[i]]+value[i])</code></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>3. dp数组初始化</strong></p>
+<ul>
+<li>当背包容量即j&#x3D;0时，dp[i][0]均为0;</li>
+<li>当存放物品0即i&#x3D;0时，各个容量背包可存放的最大物品价值dp[0][j],当<code>j&lt;weight[i]</code>时,dp[0][j]均为<code>0</code>，当<code>j&gt;=weight[i]</code>时,dp[0][j]为<code>value[0]</code>。</li>
+<li>因为其他的下标每次都会被覆盖，都初始化为<code>0</code>就好了。</li>
+</ul>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>4. 确定遍历顺序</strong></p>
+<ul>
+<li><p>先遍历物品再遍历背包：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// weight数组的⼤⼩ 就是物品个数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; weight.size(); i++) &#123; <span class="comment">// 遍历物品</span></span><br><span class="line"> <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt;= bagWeight; j++) &#123; <span class="comment">// 遍历背包容量</span></span><br><span class="line">     <span class="keyword">if</span> (j &lt; weight[i]) dp[i][j] = dp[i - <span class="number">1</span>][j]; <span class="comment">// 这个是为了展现dp数组⾥元素的</span></span><br><span class="line">变化</span><br><span class="line">     <span class="keyword">else</span> dp[i][j] = max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - weight[i]] + value[i]);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">* 先遍历背包再遍历物品：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">// weight数组的⼤⼩ 就是物品个数</span><br><span class="line">for(int j = 0; j &lt;= bagWeight; j++) &#123; // 遍历背包容量</span><br><span class="line"> for(int i = 1; i &lt; weight.size(); i++) &#123; // 遍历物品                </span><br><span class="line">     if (j &lt; weight[i]) dp[i][j] = dp[i - 1][j]        ;</span><br><span class="line">     else dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>两种都可以！</strong></p>
+<p>  <strong>为什么？</strong></p>
+<p>  首先要先明白递归顺序，先看递归公式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j]=max(dp[i-<span class="number">1</span>][j],dp[i-<span class="number">1</span>][j-wight[i]]+value[i])</span><br></pre></td></tr></table></figure>
+
+<p>  可见当先遍历物品再遍历背包时，当前dp[i][j]来自左上方和正上方</p>
+<p>  当先遍历背包再遍历物品时，同样是来自左上方和正上方，不影响当前dp[i][j]。</p>
+<p>  所以遍历顺序在二维数组遍历中都可以，只不过先遍历物品再遍历背包更好理解。</p>
+<p>  <img src="/pictures/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/2.png" alt="2"></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>5. 举例推导dp数组</strong></p>
+<p>这里我的经验是可以直接用代码打印出每次递归后的dp数组会更直观点，也不用手动推导了，部分代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;<span class="number">5</span>;j++)&#123;</span><br><span class="line">               System.out.print(dp[i][j]+<span class="string">&quot; &quot;</span>);</span><br><span class="line">           &#125;</span><br><span class="line">           System.out.println();</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">物品0</td>
+<td align="center">0</td>
+<td align="center">15</td>
+<td align="center">15</td>
+<td align="center">15</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center">物品1</td>
+<td align="center">0</td>
+<td align="center">15</td>
+<td align="center">15</td>
+<td align="center">20</td>
+<td align="center">35</td>
+</tr>
+<tr>
+<td align="center">物品2</td>
+<td align="center">0</td>
+<td align="center">15</td>
+<td align="center">15</td>
+<td align="center">20</td>
+<td align="center">35</td>
+</tr>
+</tbody></table>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2></blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">ZeAndOn</span><span class="params">(<span class="type">int</span>[] w,<span class="type">int</span>[] v,<span class="type">int</span> sum)</span>&#123;</span><br><span class="line">       <span class="type">int</span>[][] dp=<span class="keyword">new</span> <span class="title class_">int</span>[w.length][sum+<span class="number">1</span>];</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;sum+<span class="number">1</span>;j++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(j&gt;=w[<span class="number">0</span>])&#123;</span><br><span class="line">               dp[<span class="number">0</span>][j]=v[<span class="number">0</span>];</span><br><span class="line">           &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               dp[<span class="number">0</span>][j]=<span class="number">0</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;<span class="comment">//初始化dp数组</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;w.length;i++)&#123;     <span class="comment">//遍历物品</span></span><br><span class="line">           <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;sum+<span class="number">1</span>;j++)&#123;    <span class="comment">//遍历背包</span></span><br><span class="line">               <span class="keyword">if</span>(w[i]&gt;j)&#123;</span><br><span class="line">                   dp[i][j]=dp[i-<span class="number">1</span>][j];</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                   <span class="type">int</span> a=dp[i-<span class="number">1</span>][j];</span><br><span class="line">                   <span class="type">int</span> b=dp[i-<span class="number">1</span>][j-w[i]]+v[i];</span><br><span class="line">                   dp[i][j]=Math.max(a,b);<span class="comment">//递推公式</span></span><br><span class="line">               &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Latitude_x</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/21/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/">http://example.com/2022/06/21/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">你的友好邻居(｡•﹃•｡)</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/au6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/23/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98_%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/"><img class="prev-cover" src="/img/au1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">背包问题——滚动数组</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/21/Node2vec/"><img class="next-cover" src="/img/au3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Node2Vec学习笔记</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lhr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Latitude_x</div><div class="author-info__description">一个捕捉生活痕迹的小站ヾ(⌐ ■_■)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com/"><i class="fab"></i><span>bilibili（ ゜- ゜）つロ 干杯~</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">时间都停了 他们都回来了﻿:-)</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.1.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">推导思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/12/java/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB/" title="抽象类Abstract和枚举类Enum"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="抽象类Abstract和枚举类Enum"/></a><div class="content"><a class="title" href="/2022/10/12/java/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB/" title="抽象类Abstract和枚举类Enum">抽象类Abstract和枚举类Enum</a><time datetime="2022-10-12T09:10:14.855Z" title="发表于 2022-10-12 17:10:14">2022-10-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/11/java/servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="servlet生命周期"><img src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="servlet生命周期"/></a><div class="content"><a class="title" href="/2022/10/11/java/servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="servlet生命周期">servlet生命周期</a><time datetime="2022-10-11T08:59:19.044Z" title="发表于 2022-10-11 16:59:19">2022-10-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/11/java/MVC/" title="MVC设计模式"><img src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MVC设计模式"/></a><div class="content"><a class="title" href="/2022/10/11/java/MVC/" title="MVC设计模式">MVC设计模式</a><time datetime="2022-10-11T08:53:34.636Z" title="发表于 2022-10-11 16:53:34">2022-10-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/11/MySQL/Day06/" title="回捡MySQL计划第六天！"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第六天！"/></a><div class="content"><a class="title" href="/2022/09/11/MySQL/Day06/" title="回捡MySQL计划第六天！">回捡MySQL计划第六天！</a><time datetime="2022-09-11T07:19:34.266Z" title="发表于 2022-09-11 15:19:34">2022-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/10/MySQL/Day05/" title="回捡MySQL计划第五天！"><img src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第五天！"/></a><div class="content"><a class="title" href="/2022/09/10/MySQL/Day05/" title="回捡MySQL计划第五天！">回捡MySQL计划第五天！</a><time datetime="2022-09-10T07:49:15.216Z" title="发表于 2022-09-10 15:49:15">2022-09-10</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/land2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Latitude_x</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'http://example.com/2022/06/21/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/'
+    this.page.identifier = '2022/06/21/算法/动态规划/0-1背包问题/'
+    this.page.title = '0-1背包问题'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lee.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="哈,哈,哈" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
