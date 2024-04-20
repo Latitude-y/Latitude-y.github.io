@@ -51,7 +51,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-02-19 11:06:30'
+  postUpdate: '2024-04-20 10:11:20'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -140,295 +140,276 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lhr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/%E5%B0%8F%E6%96%B02.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">你的友好邻居(｡•﹃•｡)</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">你的友好邻居(｡•﹃•｡)</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/11/java/MVC/" title="MVC设计模式"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MVC设计模式"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/11/java/MVC/" title="MVC设计模式">MVC设计模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-11T08:53:34.636Z" title="发表于 2022-10-11 16:53:34">2022-10-11</time></span></div><div class="content">
-Model(模型)
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lhr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/%E5%B0%8F%E6%96%B02.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">你的友好邻居(｡•﹃•｡)</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">你的友好邻居(｡•﹃•｡)</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Session和Cookie"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie">Session和Cookie</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T03:03:58.142Z" title="发表于 2023-02-19 11:03:58">2023-02-19</time></span></div><div class="content">
+引入
+http协议无状态协议
+一个请求分为以下三步：
 
-处理数据逻辑的部分
+客户端发送请求给服务器
 
-负责在数据库中存取数据
+服务器处理该请求
 
-
-
-
-
-View(视图)
-
-处理数据显示的部分
-
-依据模型数据创建
+服务器将处理结果响应给客户端
 
 
+之后该客户端再次向该服务区发送请求后，服务器端并不能知道这两个请求是否是同一个浏览器或用户发出来的。所以作为web服务器必须能够采用某种方式来唯一识别同一个用户，并记录该用户的状态。
+
+
+会话用户打开浏览器，访问web服务器的多个资源，最后关闭浏览器，中间的一系列过程可理解为会话。   
 
 
 
-Controller(控制器)
-
-处理用户交互的部分
-
-从视图读取数据，控制用户输入，向模型发送数据
+Cookie
+机制采用在客户端保持http状态信息的方案
 
 
+原理当一个浏览器访问某web服务器时，web服务器会调用HttpServletResponse 的addCookie()方法，在响应头中添加一个名叫Set-Cookie的响应字段用于将Cookie返回给浏览器，当浏览器第二次访问该web服务器时会自动的将该cookie回传给服务器，来实现用户状态跟踪。
 
 
 
+类别
+会话级别Cookie
 
-项目架构
-Dao层
-作用
+默认情况下为会话级别Cookie
 
-做数据持久层的工作
-
-负责与数据库进行联络
+存储在浏览器内存中，用户退出后被删除
 
 
 
-设计
+持久化Cookie
 
-设计dao层接口
+通过setMaxAge设置Cookie的生命周期
 
-基本都是数据库CRUD的一些方法
+以秒为单位 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL————分数排名"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名">MySQL————分数排名</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T03:02:49.706Z" title="发表于 2023-02-19 11:02:49">2023-02-19</time></span></div><div class="content">
+题目描述
++————-+———+| Column Name | Type    |+————-+———+| id          | int     || score       | decimal |+————-+———+Id是该表的主键。该表的每一行都包含了一场比赛的分数。Score是一个有两位小数点的浮点值。
+编写 SQL 查询对分数进行排序。排名按以下规则计算:
 
+分数应按从高到低排列。
 
+如果两个分数相等，那么两个分数的排名应该相同。
 
-
-
-
-
-
-Service层
-作用
-
-业务模块的应用逻辑设计
-
-调用Dao层接口，并且提供接口给Controller层
+在排名相同的分数后，排名数应该是下一个连续的整数。换句话说，排名之间不应该有空缺的数字。
 
 
-
-设计
-
-建立Dao层之上，Controller层之下
-
-
-
-
-
-
-
-Controller层
-作用
-
-负责具体业务模块流程的控制
-负责url映射
-
-
-设计
-
-调用service层的接口来控制业务流程
-
-
-
-
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/11/MySQL/Day06/" title="回捡MySQL计划第六天！"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第六天！"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/11/MySQL/Day06/" title="回捡MySQL计划第六天！">回捡MySQL计划第六天！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-11T07:19:34.266Z" title="发表于 2022-09-11 15:19:34">2022-09-11</time></span></div><div class="content">
-题目
-编写一个 SQL 查询，获取并返回 Employee 表中第二高的薪水 。如果不存在第二高的薪水，查询应该返回 null 。
+按 score 降序返回结果表。
 
 
 
 建表
-12345Create table If Not Exists Employee (id int, salary int);Truncate table Employee;insert into Employee (id, salary) values (&#x27;1&#x27;, &#x27;100&#x27;);insert into Employee (id, salary) values (&#x27;2&#x27;, &#x27;200&#x27;);insert into Employee (id, salary) values (&#x27;3&#x27;, &#x27;300&#x27;);
+12345678Create table If Not Exists Scores (id int, score DECIMAL(3,2));Truncate table Scores;insert into Scores (id, score) values (&#x27;1&#x27;, &#x27;3.5&#x27;);insert into Scores (id, score) values  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="颠倒二进制位"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位">颠倒二进制位</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.812Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
+题目描述
+颠倒给定的 32 位无符号整数的二进制位
 
-
-Query #1
-1select * from Employee;
-
-
-
-
-id
-salary
+输入：n &#x3D; 00000010100101000001111010011100输出：964176192 (00111001011110000010100101000000)解释：输入的二进制串 00000010100101000001111010011100 表示无符号整数 43261596，
+因此返回 964176192，其二进制表示形式为 00111001011110000010100101000000。
 
 
 
-1
-100
 
 
-2
-200
+
+代码
+1234567891011public int reverseBits(int n) &#123;    int rev=0;    for(int i=0;i&lt;32&amp;&amp;n!=0;i++)&#123;        rev|=(n&amp;1)&lt;&lt;(31-i);       //  （n&amp;1）：取出从右至左第一位    // &lt;&lt;(31-i)：逻辑左移至从左至右的对称位     //  rev|：保留上一次状态 总体就是翻转        n& ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="可能的二分法"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法">可能的二分法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.811Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
+题目描述
+给定一组 n 人（编号为 1, 2, …, n）， 我们想把每个人分进任意大小的两组。每个人都可能不喜欢其他人，那么他们不应该属于同一组。
+给定整数 n 和数组 dislikes ，其中 dislikes[i] &#x3D; [ai, bi] ，表示不允许将编号为 ai 和  bi的人归入同一组。当可以用这种方法将所有人分进两组时，返回 true；否则返回 false。
+示例
+123输入：n = 4, dislikes = [[1,2],[1,3],[2,4]]输出：true解释：group1 [1,4], group2 [2,3]
+
+12输入：n = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]输出：false
+
+链接：https://leetcode.cn/problems/possible-bipartition/
 
 
-3
-300
+
+题解
+首先这道题，按我的理解是可以将dislikes数组转换为无向图，以示例二为例：
+
+ 而题目肯定需要将dislikes遍历一遍，可以想到可能会采用DFS或者BFS来进行遍历。因为BFS更好理解，所以这 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="滑动窗口————水果成篮"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮">滑动窗口————水果成篮</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.810Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
+题目描述
+你正在探访一家农场，农场从左到右种植了一排果树。这些树用一个整数数组 fruits 表示，其中 fruits[i] 是第 i 棵树上的水果 种类 。
+你想要尽可能多地收集水果。然而，农场的主人设定了一些严格的规矩，你必须按照要求采摘水果：
+
+你只有 两个 篮子，并且每个篮子只能装 单一类型 的水果。每个篮子能够装的水果总量没有限制。
+
+你可以选择任意一棵树开始采摘，你必须从 每棵 树（包括开始采摘的树）上 恰好摘一个水果 。采摘的水果应当符合篮子中的水果类型。每采摘一次，你将会向右移动到下一棵树，并继续采摘。
+
+一旦你走到某棵树前，但水果不符合篮子的水果类型，那么就必须停止采摘。
+
+
+给你一个整数数组 fruits ，返回你可以收集的水果的 最大 数目。
+示例
+1234输入：fruits = [0,1,2,2]输出：3解释：可以采摘 [1,2,2] 这三棵树。如果从第一棵树开始采摘，则只能采摘 [0,1] 这两棵树。
+
+123输入：fruits = [3,3,3,1,2,1,1,2,3,3,4]输出：5解释：可以采摘 [1,2,1,1,2] 这五棵树。
+
+
+
+解题
+采用滑动 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="反转链表"><img class="post_bg" src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="反转链表"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="反转链表">反转链表</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.808Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
+题目描述
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+输入：head &#x3D; [1,2,3,4,5]输出：[5,4,3,2,1]
+
+力扣链接：https://leetcode.cn/problems/reverse-linked-list/description/
+
+
+
+解题
+迭代迭代算法需要申请两个额外指针
+
+pre：指向当前节点的之前节点，最初是要指向null的
+
+next:暂存当前节点的下一节点
+
+
+算法大致思想是：
+
+暂存当前节点的下一节点；
+
+将当前节点的下一节点指向pre;
+
+将之前节点移向当前节点；
+
+将当前节点放到下一节点；
+
+迭代。
+
+
+
+123456789101112class Solution &#123;    public ListNode reverseList(ListNode head) &#123;        ListNode pre=null;        while(head!=null)&#123;            ListNode next=head.next;            head.nex ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/03/%E7%AE%97%E6%B3%95/BFS/" title="颜色交替的最短路径"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="颜色交替的最短路径"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/03/%E7%AE%97%E6%B3%95/BFS/" title="颜色交替的最短路径">颜色交替的最短路径</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-03T14:39:07.378Z" title="发表于 2023-02-03 22:39:07">2023-02-03</time></span></div><div class="content">
+题目描述
+在一个有向图中，节点分别标记为 0, 1, ..., n-1。图中每条边为红色或者蓝色，且存在自环或平行边。
+red_edges 中的每一个 [i, j] 对表示从节点 i 到节点 j 的红色有向边。类似地，blue_edges 中的每一个 [i, j] 对表示从节点 i 到节点 j 的蓝色有向边。
+返回长度为 n 的数组 answer，其中 answer[X] 是从节点 0 到节点 X 的红色边和蓝色边交替出现的最短路径的长度。如果不存在这样的路径，那么 answer[x] = -1。
+
+输入：n &#x3D; 3, red_edges &#x3D; [[0,1],[1,2]], blue_edges &#x3D; []输出：[0,1,-1]
 
 
 
 
 解题
-方法一查询所有小于最大薪水的值，并在这些值中找到最大值，也就是第二高的薪 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/10/MySQL/Day05/" title="回捡MySQL计划第五天！"><img class="post_bg" src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第五天！"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/10/MySQL/Day05/" title="回捡MySQL计划第五天！">回捡MySQL计划第五天！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-10T07:49:15.216Z" title="发表于 2022-09-10 15:49:15">2022-09-10</time></span></div><div class="content">
-MySQL事务
+广度优先搜索BFS的模板题，但是需要变形，需牢记
 
-原子性（Atomicity）：一个事物的操作要么都做，要么都不做，事务执行过程发生错误就会回滚Rollback，回到事务执行开始前的状态。
+首先建立存放每个节点邻居节点的数据结构；
 
-一致性（Consistency）：事务开始前和事务开始后，数据库的完整性没有破坏。
+创建存放路径的数组；
 
-隔离性（Isolation）：多个事务并发执行时，不会因为其交叉执行而导致数据的不一致。
+建立搜索队列，将尚未访问过的节点放入队列中，记得需要对其进行初始化；
 
-持久性（Durability）：事务结束后，对数据的修改就是永久的。
+不断遍历队列以及每个节点的邻居节点，这里是要不同颜色交叉访问，因此需要注意标记位的变换；
 
-
-其中，事务只能保证AID，即：原子性，隔离性，持久性。一致性无法通过事务保证，主要依赖于应用层和开发者
-
-
-
-建表一
-123456create table if not exists table01(  id int  )engine=InnoDB;  insert into table01 value(1);  insert into table01 value(2);
-
-
-Query #1
-1select * from table01;
-
-
-
-
-id
-
-
-
-1
-
-
-2
-
-
-
-
-开始事务
-Query #1
-1234begin；insert into table01 value( ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/09/MySQL/Day04/" title="回捡MySQL计划第四天！"><img class="post_bg" src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第四天！"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/09/MySQL/Day04/" title="回捡MySQL计划第四天！">回捡MySQL计划第四天！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-09T06:49:55.316Z" title="发表于 2022-09-09 14:49:55">2022-09-09</time></span></div><div class="content">
-建表
-12345678910111213141516171819202122232425create table if not exists table01(  id int auto_increment,  name char(20) not null,  sex char(3) not null,  use_time int not null,  primary key(id)  )engine=InnoDB default charset=utf8;  insert into table01 (name,sex,use_time) values(&quot;Jay&quot;,&quot;男&quot;,3);  insert into table01 (name,sex,use_time) values(&quot;Tay&quot;,&quot;女&quot;,2);  insert into table01 (name,sex,use_time) values(&quot;Jay&quot;,&quot;男&quot;,3);  insert into table01 ( ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/08/MySQL/Day03/" title="回捡MySQL计划第三天！"><img class="post_bg" src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第三天！"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/08/MySQL/Day03/" title="回捡MySQL计划第三天！">回捡MySQL计划第三天！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-08T08:24:10.640Z" title="发表于 2022-09-08 16:24:10">2022-09-08</time></span></div><div class="content">
-建表
-12345678910111213141516171819202122232425262728293031create table if not exists test01(  id int unsigned auto_increment,  name varchar(100) not null,  sex char(3) not null,  age int,  date datetime not null,  primary key(id)  )engine=InnoDB default charset=utf8;  insert into test01 (name,sex,age,date) values (&quot;Jay&quot;,&quot;男&quot;,40,now());    insert into test01 (name,sex,age,date) values (&quot;Ashin&quot;,&quot;男&quot;,40,now());      insert into test01 (name,sex,age,date) values  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/07/MySQL/Day02/" title="回捡MySQL计划第二天！"><img class="post_bg" src="/img/au6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第二天！"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/07/MySQL/Day02/" title="回捡MySQL计划第二天！">回捡MySQL计划第二天！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-07T06:50:47.217Z" title="发表于 2022-09-07 14:50:47">2022-09-07</time></span></div><div class="content">
-建表
-12345678create table if not exists test(  id int unsigned auto_increment,  name varchar(100) not null,  sex char(3) not null,  age int,  date datetime not null,  primary key(id)  )engine=InnoDB default charset=utf8;
-
-
-
-insert插入
-Query #1
-1Insert into test (name,sex,age,date) values (&quot;Jay&quot;,&quot;男&quot;,40,now());
-
-可以用now（）函数获取当前时间，并且注意字符类型要加双引号
-
-Query #2
-1Insert into test (name,sex,age,date) values (&quot;jay&quot;,&#x27;兄弟&#x27;,&quot;20&quot;,now());
-
-可以用now（）函数获取当前时间，并且注意字符类型要加双引 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/06/MySQL/Day01/" title="回捡MySQL计划第一天！"><img class="post_bg" src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="回捡MySQL计划第一天！"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/06/MySQL/Day01/" title="回捡MySQL计划第一天！">回捡MySQL计划第一天！</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-09-06T07:21:17.733Z" title="发表于 2022-09-06 15:21:17">2022-09-06</time></span></div><div class="content">
-所有语句都基于数据库 test,表名table01
-
-数据库操作
-数据库创建create database test
-
-
-数据库删除drop database test
-
-
-选择数据库use test
-
-
-
-表操作
-创建数据表1234567create table if not exists table01(  id int unsigned auto_increment,  name varchar(255) not null,  age int not null,  sex char(3) not null,  primary key(id))engine=InnoDB default charset=utf8;
-
-engine 设置存储引擎，charset 设置编码，unsigned表示非负，可以增加数据长度。
-
-
-
-
-删除数据表drop table teable01
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/18/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF/%E7%BB%84%E5%90%88%E4%BA%8C/" title="组合总和二"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="组合总和二"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/18/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF/%E7%BB%84%E5%90%88%E4%BA%8C/" title="组合总和二">组合总和二</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-18T14:10:25.816Z" title="发表于 2022-07-18 22:10:25">2022-07-18</time></span></div><div class="content">
-问题描述
-给定一个候选人编号的集合 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
-candidates 中的每个数字在每个组合中只能使用 一次 。
-注意：解集不能包含重复的组合。 
-示例 1:
-输入: candidates &#x3D; [10,1,2,7,6,1,5], target &#x3D; 8,输出:[[1,1,6],[1,2,5],[1,7],[2,6]]
-示例 2:
-输入: candidates &#x3D; [2,5,2,1,2], target &#x3D; 5,输出:[[1,2,2],[5]]
-力扣链接：https://leetcode.cn/problems/combination-sum-ii/
-
-
-
-解题思路
-本题需要求出所有可能的组合，所以需要采用回溯法解决。
-本题的难点如下：
-
-结果去重。
-
-数组中的数不可重复使用，但数组中的数有重复。
-
-
-其实结果去重是最难的，如果不考虑超时，倒是可以用java提供的utile去重或者自己编写函数去重，但是力扣肯定通不过，所以得另寻他法。
- ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/18/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" title="完全平方数"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="完全平方数"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/18/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" title="完全平方数">完全平方数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-18T14:04:15.841Z" title="发表于 2022-07-18 22:04:15">2022-07-18</time></span></div><div class="content">
+路径公式：dist[1-color] ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/12/23/%E7%AE%97%E6%B3%95/DFS-BFS-%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="DFS-BFS-并查集"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS-BFS-并查集"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/23/%E7%AE%97%E6%B3%95/DFS-BFS-%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="DFS-BFS-并查集">DFS-BFS-并查集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-12-23T02:21:17.419Z" title="发表于 2022-12-23 10:21:17">2022-12-23</time></span></div><div class="content">
 题目描述
-给你一个整数 n ，返回 和为 n 的完全平方数的最少数量 。
-完全平方数 是一个整数，其值等于另一个整数的平方；换句话说，其值等于一个整数自乘的积。例如，1、4、9 和 16 都是完全平方数，而 3 和 11 不是。
-示例 1：
-输入：n &#x3D; 12输出：3解释：12 &#x3D; 4 + 4 + 4
-示例 2：
-输入：n &#x3D; 13输出：2解释：13 &#x3D; 4 + 9
-力扣链接：https://leetcode.cn/problems/perfect-squares/
-
-
-
-推导思路
-完全平方数作为物品，正整数n就是背包，完全平方数可以重复使用，所以这是一个完全背包问题。
+检查两个节点是否在同一个连通分量里面
+输入：n &#x3D; 6, edges &#x3D; [[0,1],[0,2],[3,5],[5,4],[4,3]], source &#x3D; 0, destination &#x3D; 5输出：false解释：不存在由顶点 0 到顶点 5 的路径.
 
 
 
 
-
-确定dp数组及下标含义
-dp[i]:和为i的完全平方数的最少数量为dp[i]。
-
+解题
+题目要求判断是否存在从起点 source到终点 destination的有效路径，等价于求图中两个顶点 source,destination 是否连通。两点连通性问题为经典问题，一般可以使用广度优先搜索或深度优先搜索，以及并查集来解决。
 
 
 
+广度优先算法BFS
+关键设置：
+
+设置队列存储最近访问过的节点；
+
+设置标记位记录已经访问过的节点；
+
+
+算法步骤：
+
+初始化：将顶点source设为已访问，并且入队；
+
+将队列中的节点vertex出队；
+
+将与vertex相邻并且尚未访问的节点入队，并且设为已经访问；
+
+如果队列为空前访问到destination，则返回true，否则返回false
 
 
 
-递推公式
-dp[j]可以由两个方面推导而来
+代码12345678910111213141516171819202122 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/12/java/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB/" title="抽象类Abstract和枚举类Enum"><img class="post_bg" src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="抽象类Abstract和枚举类Enum"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/12/java/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB/" title="抽象类Abstract和枚举类Enum">抽象类Abstract和枚举类Enum</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-12T09:10:14.855Z" title="发表于 2022-10-12 17:10:14">2022-10-12</time></span></div><div class="content">
+抽象Abstract
+作用
+就是在父类的方法还不知道要做什么时，仅仅是为了给出方法名时使用
 
-不包含i时的完全平方数个数，即dp[j];
-
-包含i时的完全平方数个数，即dp[j-i]+1;
-
-
-因为要最少的个数，综上，递推公式为：
-dp[j]=Math.min(dp[j],dp[j-i]+1)
+目的就是为了让子类去覆盖它
 
 
+细节
+类中有抽象方法，那么该类也要声明为抽象类；
+
+抽象方法不给出具体实现逻辑，由子类去重写实现；
+
+抽象类无法被实例化；
+
+抽象方法不能被private修饰，因为抽象方法需要被子类重写，而private修饰后不能被子类访问，所以相矛盾；
+
+抽象方法不能被static修饰，因为抽象类不能被实例化，static修饰后的方法可直接通过类名调用，相矛盾；
+
+抽象方法不能被final修饰，因为final修饰的类无法被继承，而抽象类就是需要继承去实现抽象方法，相矛盾；
+
+如果一个类继承了一个抽象类，那么需要重写抽象类中所有的抽象方法。
+
+
+和接口对比
+接口中不能有实例方法去实现业务逻辑；
+
+抽象类中可以有实例方法去实现业务逻辑。
 
 
 
 
 
-dp数组初始化 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/18/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" title="单词拆分"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="单词拆分"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/18/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" title="单词拆分">单词拆分</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-18T14:01:32.640Z" title="发表于 2022-07-18 22:01:32">2022-07-18</time></span></div><div class="content">
-题目描述
-给你一个字符串 s 和一个字符串列表 wordDict 作为字典。请你判断是否可以利用字典中出现的单词拼接出 s 。
-注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。
-示例 1：
-输入: s &#x3D; “leetcode”, wordDict &#x3D; [“leet”, “code”]输出: true解释: 返回 true 因为 “leetcode” 可以由 “leet” 和 “code” 拼接成。
-示例 2：
-输入: s &#x3D; “applepenapple”, wordDict &#x3D; [“apple”, “pen”]输出: true解释: 返回 true 因为 “applepenapple” 可以由 “apple” “pen” “apple” 拼接成。     注意，你可以重复使用字典中的单词。
-示例 3：
-输入: s &#x3D; “catsandog”, wordDict &#x3D; [“cats”, “dog”, “sand”, “and”, “cat”]输出: false
-力扣链接：https://leetcode. ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lhr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Latitude_x</div><div class="author-info__description">一个捕捉生活痕迹的小站ヾ(⌐ ■_■)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com/"><i class="fab"></i><span>bilibili（ ゜- ゜）つロ 干杯~</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">时间都停了 他们都回来了﻿:-)</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie"><img src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Session和Cookie"/></a><div class="content"><a class="title" href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie">Session和Cookie</a><time datetime="2023-02-19T03:03:58.142Z" title="发表于 2023-02-19 11:03:58">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL————分数排名"/></a><div class="content"><a class="title" href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名">MySQL————分数排名</a><time datetime="2023-02-19T03:02:49.706Z" title="发表于 2023-02-19 11:02:49">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位"><img src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="颠倒二进制位"/></a><div class="content"><a class="title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位">颠倒二进制位</a><time datetime="2023-02-19T02:56:10.812Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法"><img src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="可能的二分法"/></a><div class="content"><a class="title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法">可能的二分法</a><time datetime="2023-02-19T02:56:10.811Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮"><img src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="滑动窗口————水果成篮"/></a><div class="content"><a class="title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮">滑动窗口————水果成篮</a><time datetime="2023-02-19T02:56:10.810Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">九月 2022</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">33</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">21.6k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-02-19T03:06:29.284Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/land2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Latitude_x</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+枚举Enum
+格式
+没有枚举类时定义常量的方法：
+12345678910111213141516171819202122/** * Created by zejian on 2017/5/7. * Blog : http://blog ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/11/java/servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="servlet生命周期"><img class="post_bg" src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="servlet生命周期"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/11/java/servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="servlet生命周期">servlet生命周期</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-11T08:59:19.044Z" title="发表于 2022-10-11 16:59:19">2022-10-11</time></span></div><div class="content">
+init（）
+
+Servlet初始化后开始调用init（）方法；
+
+用户在发送第一次请求后，Servlet对象被实例化，那么就开始执行内部的方法；
+
+init（）方法只能在用户第一次发送请求时被调用一次，后续请求该方法不再被执行；
+
+当然，也可以在xml里面设置Servlet在服务器启动时就初始化Servlet，也就是执行init()方法。
+
+
+
+
+
+service()
+
+service()方法是执行实际任务的主要方法，调用该方法处理来自客户端的请求；
+
+每接受一次请求，服务器产生一个新的线程调用该服务；
+
+可执行多次。
+
+
+
+
+
+destroy()
+
+destroy()方法也只执行一次；
+
+在服务器关闭时被调用；
+
+执行后，Servlet对象被标记为垃圾回收。
+
+
+
+
+
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lhr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Latitude_x</div><div class="author-info__description">一个捕捉生活痕迹的小站ヾ(⌐ ■_■)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com/"><i class="fab"></i><span>bilibili（ ゜- ゜）つロ 干杯~</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">时间都停了 他们都回来了﻿:-)</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01"><img src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——01"/></a><div class="content"><a class="title" href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01">Shiro整合JWT——01</a><time datetime="2024-04-19T09:30:09.523Z" title="发表于 2024-04-19 17:30:09">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑"><img src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux部署Redis过程中踩的坑"/></a><div class="content"><a class="title" href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑">Linux部署Redis过程中踩的坑</a><time datetime="2024-04-19T09:29:18.016Z" title="发表于 2024-04-19 17:29:18">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——02"/></a><div class="content"><a class="title" href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02">Shiro整合JWT——02</a><time datetime="2024-04-19T09:29:09.947Z" title="发表于 2024-04-19 17:29:09">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring"/></a><div class="content"><a class="title" href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring">Spring</a><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关"><img src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web相关"/></a><div class="content"><a class="title" href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关">web相关</a><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">九月 2022</span><span class="card-archive-list-count">6</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">43</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">29.7k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-04-20T02:11:19.795Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/land2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Latitude_x</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")

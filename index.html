@@ -51,7 +51,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-02-19 11:06:30'
+  postUpdate: '2024-04-20 10:11:19'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -140,275 +140,446 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lhr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/%E5%B0%8F%E6%96%B02.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">你的友好邻居(｡•﹃•｡)</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">你的友好邻居(｡•﹃•｡)</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Session和Cookie"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie">Session和Cookie</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T03:03:58.142Z" title="发表于 2023-02-19 11:03:58">2023-02-19</time></span></div><div class="content">
-引入
-http协议无状态协议
-一个请求分为以下三步：
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lhr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/%E5%B0%8F%E6%96%B02.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">你的友好邻居(｡•﹃•｡)</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">你的友好邻居(｡•﹃•｡)</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——01"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01">Shiro整合JWT——01</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-19T09:30:09.523Z" title="发表于 2024-04-19 17:30:09">2024-04-19</time></span></div><div class="content">
+什么是Shiro？
 
-客户端发送请求给服务器
+定义：”Apache Shiro是一个强大且易用的Java安全框架，执行身份验证、授权、密码和会话管理”。
 
-服务器处理该请求
+核心组件：
 
-服务器将处理结果响应给客户端
+Subject：可以理解为”当前操作用户”
 
+SecurityManager：Shiro框架的核心，执行”认证（Authentication）“、”授权（Authorization）“、”会话管理（Session Management）“、”加密（Encryption）“等操作
 
-之后该客户端再次向该服务区发送请求后，服务器端并不能知道这两个请求是否是同一个浏览器或用户发出来的。所以作为web服务器必须能够采用某种方式来唯一识别同一个用户，并记录该用户的状态。
+Realm：在定义的Realm中执行用户登录验证及权限验证
 
 
-会话用户打开浏览器，访问web服务器的多个资源，最后关闭浏览器，中间的一系列过程可理解为会话。   
 
 
 
-Cookie
-机制采用在客户端保持http状态信息的方案
 
+基本使用.ini文件
+123456[users]Jay=Mojito,role1,role2Ashin=mayday[roles]role1=user:insert,user:select
 
-原理当一个浏览器访问某web服务器时，web服务器会调用HttpServletResponse 的addCookie()方法，在响应头中添加一个名叫Set-Cookie的响应字段用于将Cookie返回给浏览器，当浏览器第二次访问该web服务器时会自动的将该cookie回传给服务器，来实现用户状态跟踪。
 
 
 
-类别
-会话级别Cookie
+自定义的Realm
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748public class CustomerMD5Realm extends AuthorizingReal ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑"><img class="post_bg" src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux部署Redis过程中踩的坑"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑">Linux部署Redis过程中踩的坑</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-19T09:29:18.016Z" title="发表于 2024-04-19 17:29:18">2024-04-19</time></span></div><div class="content">
+本文是作者在远程服务器安装Redis的操作步骤以及安装过程中踩到的坑，特此记录。
 
-默认情况下为会话级别Cookie
+服务器操作系统：
+12345678$ cat /etc/os-releasePRETTY_NAME=&quot;Ubuntu 22.04.2 LTS&quot;NAME=&quot;Ubuntu&quot;VERSION_ID=&quot;22.04&quot;VERSION=&quot;22.04.2 LTS (Jammy Jellyfish)&quot;VERSION_CODENAME=jammyID=ubuntuID_LIKE=debian
 
-存储在浏览器内存中，用户退出后被删除
+Redis版本：Download | Redis
+123$ redis-cli INFO server# Serverredis_version:7.2.4
 
 
 
-持久化Cookie
 
-通过setMaxAge设置Cookie的生命周期
+安装
 
-以秒为单位 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL————分数排名"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名">MySQL————分数排名</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T03:02:49.706Z" title="发表于 2023-02-19 11:02:49">2023-02-19</time></span></div><div class="content">
-题目描述
-+————-+———+| Column Name | Type    |+————-+———+| id          | int     || score       | decimal |+————-+———+Id是该表的主键。该表的每一行都包含了一场比赛的分数。Score是一个有两位小数点的浮点值。
-编写 SQL 查询对分数进行排序。排名按以下规则计算:
+下载压缩包
+1wget https://github.com/redis/redis/archive/7.2.4.tar.gz
 
-分数应按从高到低排列。
+还有一种比较笨拙的方式，自己装的时候不知道为毛没有办法下载，只能先在windows主机上下载，然后上传到Linux服务器中去：
+1scp C:\path\t ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——02"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02">Shiro整合JWT——02</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-19T09:29:09.947Z" title="发表于 2024-04-19 17:29:09">2024-04-19</time></span></div><div class="content">
+整合Shiro和JWT
+编写JWT工具类主要实现以下两个功能：
 
-如果两个分数相等，那么两个分数的排名应该相同。
+生成token：verify(String token)&#123;&#125;
 
-在排名相同的分数后，排名数应该是下一个连续的整数。换句话说，排名之间不应该有空缺的数字。
+验证token：sign(String account, String currentTimeMillis) &#123;&#125;
 
 
-按 score 降序返回结果表。
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081@Componentpublic class JwtUtil &#123;    /**     * 过期时间改为从配置文件获取     */    private static String accessTokenExpireTime;    /**     * JWT认证加密私钥(Base64加密)     */    private static String encryptJWTKey;   ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring">Spring</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></span></div><div class="content">
 
+Spring设计模式
 
+单例模式  
+工厂模式：BeanFactory和ApplicationContext两种IOC容器生产Bean对象  
+代理模式：CGLIB动态代理和JDK动态代理，AOP  
+模版方法：数据库操作，JDBCTemplate
 
-建表
-12345678Create table If Not Exists Scores (id int, score DECIMAL(3,2));Truncate table Scores;insert into Scores (id, score) values (&#x27;1&#x27;, &#x27;3.5&#x27;);insert into Scores (id, score) values  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="颠倒二进制位"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位">颠倒二进制位</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.812Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
-题目描述
-颠倒给定的 32 位无符号整数的二进制位
 
-输入：n &#x3D; 00000010100101000001111010011100输出：964176192 (00111001011110000010100101000000)解释：输入的二进制串 00000010100101000001111010011100 表示无符号整数 43261596，
-因此返回 964176192，其二进制表示形式为 00111001011110000010100101000000。
+IOC和AOP
 
+IOC容器：BeanFactory和ApplicationContext  
+ApplicationContext接口扩展了BeanFactory接口
 
 
+AOP：实现了接口就是JDK动态代理，反之就是CGLIB动态代理  
 
+Spring AOP和AspectJ AOP
 
 
-代码
-1234567891011public int reverseBits(int n) &#123;    int rev=0;    for(int i=0;i&lt;32&amp;&amp;n!=0;i++)&#123;        rev|=(n&amp;1)&lt;&lt;(31-i);       //  （n&amp;1）：取出从右至左第一位    // &lt;&lt;(31-i)：逻辑左移至从左至右的对称位     //  rev|：保留上一次状态 总体就是翻转        n& ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="可能的二分法"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法">可能的二分法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.811Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
-题目描述
-给定一组 n 人（编号为 1, 2, …, n）， 我们想把每个人分进任意大小的两组。每个人都可能不喜欢其他人，那么他们不应该属于同一组。
-给定整数 n 和数组 dislikes ，其中 dislikes[i] &#x3D; [ai, bi] ，表示不允许将编号为 ai 和  bi的人归入同一组。当可以用这种方法将所有人分进两组时，返回 true；否则返回 false。
-示例
-123输入：n = 4, dislikes = [[1,2],[1,3],[2,4]]输出：true解释：group1 [1,4], group2 [2,3]
 
-12输入：n = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]输出：false
+Spring AOP基于动态代理，AspectJ AOP基于字节码  
+Spring AOP运行时增强，AspectJ AOP编译时增强
 
-链接：https://leetcode.cn/problems/possible-bipartition/
 
+FactoryBean和BeanFactory
+Beanfactory：  
 
+Bean的工厂  
+ApplicationContext的父类  
+IOC容器的核心  
+负责生产和管理Bean对象
 
-题解
-首先这道题，按我的理解是可以将dislikes数组转换为无向图，以示例二为例：
+FactoryBean:  
 
- 而题目肯定需要将dislikes遍历一遍，可以想到可能会采用DFS或者BFS来进行遍历。因为BFS更好理解，所以这 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮"><img class="post_bg" src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="滑动窗口————水果成篮"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮">滑动窗口————水果成篮</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.810Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
-题目描述
-你正在探访一家农场，农场从左到右种植了一排果树。这些树用一个整数数组 fruits 表示，其中 fruits[i] 是第 i 棵树上的水果 种类 。
-你想要尽可能多地收集水果。然而，农场的主人设定了一些严格的规矩，你必须按照要求采摘水果：
+一个Bean
 
-你只有 两个 篮子，并且每个篮子只能装 单一类型 的水果。每个篮子能够装的水果总量没有限制。
 
-你可以选择任意一棵树开始采摘，你必须从 每棵 树（包括开始采摘的树）上 恰好摘一个水果 。采摘的水果应当符合篮子中的水果类型。每采摘一次，你将会向右移动到下一棵树，并继续采摘。
+SpringBean的生命周期
 
-一旦你走到某棵树前，但水果不符合篮子的水果类型，那么就必须停止采摘。
+实例化：创建一个B ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关"><img class="post_bg" src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web相关"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关">web相关</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></span></div><div class="content">
+HTTP常见状态码
 
+1开头（信息类）
 
-给你一个整数数组 fruits ，返回你可以收集的水果的 最大 数目。
-示例
-1234输入：fruits = [0,1,2,2]输出：3解释：可以采摘 [1,2,2] 这三棵树。如果从第一棵树开始采摘，则只能采摘 [0,1] 这两棵树。
+100：接受的请求正在处理
 
-123输入：fruits = [3,3,3,1,2,1,1,2,3,3,4]输出：5解释：可以采摘 [1,2,1,1,2] 这五棵树。
 
+2开头（成功类）
 
+200：服务器成功处理请求
 
-解题
-采用滑动 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/02/19/%E7%AE%97%E6%B3%95/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="反转链表"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="反转链表"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="反转链表">反转链表</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-19T02:56:10.808Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></span></div><div class="content">
-题目描述
-给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
-输入：head &#x3D; [1,2,3,4,5]输出：[5,4,3,2,1]
 
-力扣链接：https://leetcode.cn/problems/reverse-linked-list/description/
+3开头（重定向）
 
+301：永久重定向，资源被分配了新的url
 
+302：临时重定向，资源被零时被分配了新的url
 
-解题
-迭代迭代算法需要申请两个额外指针
+303：资源存在另一个url，用get方法获取资源
 
-pre：指向当前节点的之前节点，最初是要指向null的
 
-next:暂存当前节点的下一节点
 
+4开头（客户端错误）
 
-算法大致思想是：
+400：错误请求，服务器不理解请求语法
 
-暂存当前节点的下一节点；
+401：表示发送的请求需要有HTTP认证的认证信息
 
-将当前节点的下一节点指向pre;
+403：禁止，服务器拒绝请求
 
-将之前节点移向当前节点；
+404：未找到，服务器找不到请求网页
 
-将当前节点放到下一节点；
 
-迭代。
 
+5开头（服务器错误）
 
+500：服务器内部错误，无法完成请求
 
-123456789101112class Solution &#123;    public ListNode reverseList(ListNode head) &#123;        ListNode pre=null;        while(head!=null)&#123;            ListNode next=head.next;            head.nex ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/02/03/%E7%AE%97%E6%B3%95/BFS/" title="颜色交替的最短路径"><img class="post_bg" src="/img/au1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="颜色交替的最短路径"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/02/03/%E7%AE%97%E6%B3%95/BFS/" title="颜色交替的最短路径">颜色交替的最短路径</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-02-03T14:39:07.378Z" title="发表于 2023-02-03 22:39:07">2023-02-03</time></span></div><div class="content">
-题目描述
-在一个有向图中，节点分别标记为 0, 1, ..., n-1。图中每条边为红色或者蓝色，且存在自环或平行边。
-red_edges 中的每一个 [i, j] 对表示从节点 i 到节点 j 的红色有向边。类似地，blue_edges 中的每一个 [i, j] 对表示从节点 i 到节点 j 的蓝色有向边。
-返回长度为 n 的数组 answer，其中 answer[X] 是从节点 0 到节点 X 的红色边和蓝色边交替出现的最短路径的长度。如果不存在这样的路径，那么 answer[x] = -1。
+503：服务器停机维护或者超载，无法处理请求
 
-输入：n &#x3D; 3, red_edges &#x3D; [[0,1],[1,2]], blue_edges &#x3D; []输出：[0,1,-1]
 
 
 
 
-解题
-广度优先搜索BFS的模板题，但是需要变形，需牢记
 
-首先建立存放每个节点邻居节点的数据结构；
 
-创建存放路径的数组；
+重定向和转发
 
-建立搜索队列，将尚未访问过的节点放入队列中，记得需要对其进行初始化；
+重定向（redirect）
 
-不断遍历队列以及每个节点的邻居节点，这里是要不同颜色交叉访问，因此需要注意标记位的变换；
+浏览器端进行的资源跳转
 
-路径公式：dist[1-color] ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/12/23/%E7%AE%97%E6%B3%95/DFS-BFS-%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="DFS-BFS-并查集"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DFS-BFS-并查集"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/23/%E7%AE%97%E6%B3%95/DFS-BFS-%E5%B9%B6%E6%9F%A5%E9%9B%86/" title="DFS-BFS-并查集">DFS-BFS-并查集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-12-23T02:21:17.419Z" title="发表于 2022-12-23 10:21:17">2022-12-23</time></span></div><div class="content">
-题目描述
-检查两个节点是否在同一个连通分量里面
-输入：n &#x3D; 6, edges &#x3D; [[0,1],[0,2],[3,5],[5,4],[4,3]], source &#x3D; 0, destination &#x3D; 5输出：false解释：不存在由顶点 0 到顶点 5 的路径.
+特点:
 
+新的地址
 
+请求2次
 
+请求域中的数据会丢失
 
-解题
-题目要求判断是否存在从起点 source到终点 destination的有效路径，等价于求图中两个顶点 source,destination 是否连通。两点连通性问题为经典问题，一般可以使用广度优先搜索或深度优先搜索，以及并查集来解决。
 
 
+SpringMVC中的写法：&quot;redirect:/target&quot;
 
-广度优先算法BFS
-关键设置：
 
-设置队列存储最近访问过的节点；
 
-设置标记位记录已经访问过的节点；
 
+转发（forward）
 
-算法步骤：
+一种在服务器内部的资源跳转方式
 
-初始化：将顶点source设为已访问，并且入队；
+特点：
 
-将队列中的节点vertex出队；
+地址不发生变化
 
-将与vertex相邻并且尚未访问的节点入队，并且设为已经访问；
+只能转发到当前服务器内部资源中
 
-如果队列为空前访问到destination，则返回true，否则返回false
+1次请求
 
+请求域中的数据 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/09/19/HashMap%E6%8E%92%E5%BA%8F/" title="HashMap排序"><img class="post_bg" src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HashMap排序"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/19/HashMap%E6%8E%92%E5%BA%8F/" title="HashMap排序">HashMap排序</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-19T09:31:59.942Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></span></div><div class="content">
+小红书面试题
+详细题目描述略
+题目本意是 HashMap根据其value排序，如果value相等，则根据key的字典序排序直接给出代码，温故而知新
 
+1234567891011121314151617181920212223242526272829303132333435363738import java.util.*;/** * @author Latitude_X * @date 2023/8/7 20:18 */public class sortMap &#123;    public static void main(String[] args) &#123;        Scanner scanner=new Scanner(System.in);        String s = scanner.nextLine();        sortMap sortMap=new sortMap();        sortMap.getWords(s);    &#125;    public void getWords(String s)&#123;        Str ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/09/19/git%E7%AC%94%E8%AE%B0/" title="Git笔记"><img class="post_bg" src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/19/git%E7%AC%94%E8%AE%B0/" title="Git笔记">Git笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-19T09:31:59.942Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></span></div><div class="content">
+Git的三个区域
 
-代码12345678910111213141516171819202122 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/10/12/java/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB/" title="抽象类Abstract和枚举类Enum"><img class="post_bg" src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="抽象类Abstract和枚举类Enum"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/12/java/%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB/" title="抽象类Abstract和枚举类Enum">抽象类Abstract和枚举类Enum</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-12T09:10:14.855Z" title="发表于 2022-10-12 17:10:14">2022-10-12</time></span></div><div class="content">
-抽象Abstract
-作用
-就是在父类的方法还不知道要做什么时，仅仅是为了给出方法名时使用
+工作区
 
-目的就是为了让子类去覆盖它
+电脑里面能看的目录
 
+通过以下命令进行Git初始化
+1git init
 
-细节
-类中有抽象方法，那么该类也要声明为抽象类；
 
-抽象方法不给出具体实现逻辑，由子类去重写实现；
+暂存区
 
-抽象类无法被实例化；
+一般存放在 .git 目录下的 index 文件（.git&#x2F;index）中，所以我们把暂存区有时也叫作索引（index）
 
-抽象方法不能被private修饰，因为抽象方法需要被子类重写，而private修饰后不能被子类访问，所以相矛盾；
+通过以下命令将工作区文件添加到暂存区
+1git add .
 
-抽象方法不能被static修饰，因为抽象类不能被实例化，static修饰后的方法可直接通过类名调用，相矛盾；
 
-抽象方法不能被final修饰，因为final修饰的类无法被继承，而抽象类就是需要继承去实现抽象方法，相矛盾；
+版本库&#x2F;本地仓库
 
-如果一个类继承了一个抽象类，那么需要重写抽象类中所有的抽象方法。
+通过一下命令将暂存区文件提交到本地仓库
+1git commit -m &quot;message备注信息&quot;
 
 
-和接口对比
-接口中不能有实例方法去实现业务逻辑；
 
-抽象类中可以有实例方法去实现业务逻辑。
+注意，文件要提交到本地仓库后才能够push到远程仓库中去
 
 
 
+其他命令
 
+克隆一个项目到本地
+1git clone [address]
 
-枚举Enum
-格式
-没有枚举类时定义常量的方法：
-12345678910111213141516171819202122/** * Created by zejian on 2017/5/7. * Blog : http://blog ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/11/java/servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="servlet生命周期"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="servlet生命周期"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/11/java/servlet%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="servlet生命周期">servlet生命周期</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-11T08:59:19.044Z" title="发表于 2022-10-11 16:59:19">2022-10-11</time></span></div><div class="content">
-init（）
+查看本地仓库当前状态
+1git status [-s]
 
-Servlet初始化后开始调用init（）方法；
+有三种状态：
 
-用户在发送第一次请求后，Servlet对象被实例化，那么就开始执行内部的方法；
+Changes to be committed:已经从工作区add到暂存区的文件
 
-init（）方法只能在用户第一次发送请求时被调用一次，后续请求该方法不再被执行；
+Changes not staged for commit:表示工作区，暂时区都存在的file（文件或文件夹），在工作区进行修改或删除，但是没有add到暂存区
 
-当然，也可以在xml里面设置Servlet在服务器启动时就初始化Servlet，也就是执行init()方法。
+Untracked files:表示只在工作区有的file（文件或文件 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/09/19/adb%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="设备采集"><img class="post_bg" src="/img/au6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设备采集"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/19/adb%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="设备采集">设备采集</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-09-19T09:31:59.941Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></span></div><div class="content">
+命令
 
+终端设备
 
+主版本
+**
 
+子版本
+1adb shell getprop ro.build.version.release
 
+CPU品牌
+1adb shell getprop ro.product.cpu.abi   (需处理)
 
-service()
+CPU型号
 
-service()方法是执行实际任务的主要方法，调用该方法处理来自客户端的请求；
+CPU主频(最大)
+12adb shell cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq(最大，单位HZ)
 
-每接受一次请求，服务器产生一个新的线程调用该服务；
+CPU核心数
+1adb shell cat /sys/devices/system/cpu/present
 
-可执行多次。
+RAM
+1adb shell cat /proc/meminfo   (需处理)
 
+分辨率
+1adb shell wm size
 
+全面屏
+1adb shell wm size   (需判断)
 
+ROM
+1adb shell df -h /data
 
+设备类型
+手机
 
-destroy()
+品牌
+1adb shell getprop ro.product.brand
 
-destroy()方法也只执行一次；
+设备名
+1adb shell getprop ro.product.name
 
-在服务器关闭时被调用；
+设备型号
+1adb sh ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/07/22/Web/WebSocket/" title="WebSocket"><img class="post_bg" src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WebSocket"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/07/22/Web/WebSocket/" title="WebSocket">WebSocket</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-22T02:44:55.455Z" title="发表于 2023-07-22 10:44:55">2023-07-22</time></span></div><div class="content">
+CS架构——BS架构
 
-执行后，Servlet对象被标记为垃圾回收。
+BS架构
 
+Browser&#x2F;Server(浏览器&#x2F;服务器模式)
 
+优点：
 
+web应用
 
+实现跨平台
 
-</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lhr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Latitude_x</div><div class="author-info__description">一个捕捉生活痕迹的小站ヾ(⌐ ■_■)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com/"><i class="fab"></i><span>bilibili（ ゜- ゜）つロ 干杯~</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">时间都停了 他们都回来了﻿:-)</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie"><img src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Session和Cookie"/></a><div class="content"><a class="title" href="/2023/02/19/Web/Session&amp;Cookie/" title="Session和Cookie">Session和Cookie</a><time datetime="2023-02-19T03:03:58.142Z" title="发表于 2023-02-19 11:03:58">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL————分数排名"/></a><div class="content"><a class="title" href="/2023/02/19/MySQL/%E5%88%86%E6%95%B0%E6%8E%92%E5%90%8D/" title="MySQL————分数排名">MySQL————分数排名</a><time datetime="2023-02-19T03:02:49.706Z" title="发表于 2023-02-19 11:02:49">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位"><img src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="颠倒二进制位"/></a><div class="content"><a class="title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="颠倒二进制位">颠倒二进制位</a><time datetime="2023-02-19T02:56:10.812Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法"><img src="/img/au2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="可能的二分法"/></a><div class="content"><a class="title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95%E2%80%94%E2%80%94%E6%9F%93%E8%89%B2%E6%B3%95/" title="可能的二分法">可能的二分法</a><time datetime="2023-02-19T02:56:10.811Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮"><img src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="滑动窗口————水果成篮"/></a><div class="content"><a class="title" href="/2023/02/19/%E7%AE%97%E6%B3%95/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" title="滑动窗口————水果成篮">滑动窗口————水果成篮</a><time datetime="2023-02-19T02:56:10.810Z" title="发表于 2023-02-19 10:56:10">2023-02-19</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">九月 2022</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">33</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">21.6k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-02-19T03:06:29.284Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/land2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Latitude_x</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+客户端零维护
+
+
+
+缺点：
+
+交互能力相对弱
+
+响应速度相对慢
+
+安全性相对低
+
+
+
+
+
+CS架构
+
+Client&#x2F;Server(客户端&#x2F;服务器模式)
+
+优点：
+
+桌面级应用
+
+响应速度快
+
+安全性强
+
+交互性强
+
+
+
+缺点：
+
+管理开销大
+
+硬件要求高
+
+
+
+
+
+
+
+
+
+WebSocket
+
+WebSocket是什么?
+
+基于TCP的应用层协议
+
+实现了浏览器和服务器之间的全双工通信，能够更好的节约服务器资源和带宽并达到实时通讯的目的
+
+持久化协议
+
+浏览器和服务器建立连接后，可以互相主动请求
+
+
+
+与HTTP协议的关系
+
+相同点：
+
+基于TCP，都是可靠传输协议
+
+应用层协议
+
+
+
+不同点：
+
+WebSocket是双向的，HTTP是单向的
+
+WebSocket需要浏览器和服务器握手进行连接建立，HTTP是浏览器主动向服务器发起连接建立，服务器预先不知道
+
+
+
+
+
+联系
+WebSocket建立握手时，数据通过HTTP ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/06/10/%E7%A7%8B%E6%8B%9B/" title="日程计划"><img class="post_bg" src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="日程计划"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/06/10/%E7%A7%8B%E6%8B%9B/" title="日程计划">日程计划</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-06-10T09:31:38.359Z" title="发表于 2023-06-10 17:31:38">2023-06-10</time></span></div><div class="content">
+秋招
+1. 秋招日程2. 工作方向3. 秋招准备需要学习的东西（重要）：
+
+行测（银行国企），可去看b站看教程，但不建议事无巨细的看一遍，不懂的再去选择性的看
+
+粉笔app
+
+后期可以买卷子
+
+
+
+408、java基础、数据库、基础框架知识等等计算机知识，无论私企还是国企银行都要准备，因此这个最为重要
+
+PDF背即可
+
+LeetCode每周还是要刷刷题，不强制要求，但是每周还是希望刷3道以上
+
+
+
+
+4. 城市（次要考虑）
+武汉，长沙，杭州，成都
+
+广州，深圳
+
+
+
+
+
+毕业论文
+
+每晚8:00下班，在公司做到9：00论文相关的事，比如：
+
+看论文
+
+跑代码
+
+
+
+一周至少能看完2篇论文
+
+目标是在 9月底，10月初能有所成果
+
+最终目标是能在实习结束前，能够构思好新的研究目标，能够在回学校就开始跑实验
+
+
+
+
+
+研究最后一年学习计划
+
+软考
+
+六级450以上
+
+其他的有空就准备
+
+
+
+
+
+存钱
+
+目标是 每个月存4000
+
+如果做四个月，那么就可以存到1.6W
+
+如果做五个月，呢么就可以存到2W
+
+
+
+支出打算：
+
+准备1W买相机！！！
+
+准备2K给爸妈，1K请吃饭，1K其他事
+
+ ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lhr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Latitude_x</div><div class="author-info__description">一个捕捉生活痕迹的小站ヾ(⌐ ■_■)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com/"><i class="fab"></i><span>bilibili（ ゜- ゜）つロ 干杯~</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">时间都停了 他们都回来了﻿:-)</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01"><img src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——01"/></a><div class="content"><a class="title" href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01">Shiro整合JWT——01</a><time datetime="2024-04-19T09:30:09.523Z" title="发表于 2024-04-19 17:30:09">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑"><img src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux部署Redis过程中踩的坑"/></a><div class="content"><a class="title" href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑">Linux部署Redis过程中踩的坑</a><time datetime="2024-04-19T09:29:18.016Z" title="发表于 2024-04-19 17:29:18">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——02"/></a><div class="content"><a class="title" href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02">Shiro整合JWT——02</a><time datetime="2024-04-19T09:29:09.947Z" title="发表于 2024-04-19 17:29:09">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring"/></a><div class="content"><a class="title" href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring">Spring</a><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关"><img src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web相关"/></a><div class="content"><a class="title" href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关">web相关</a><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/02/"><span class="card-archive-list-date">二月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">九月 2022</span><span class="card-archive-list-count">6</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">43</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">29.7k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-04-20T02:11:19.795Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/land2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Latitude_x</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
   endLoading: () => {
     document.body.style.overflow = 'auto';
     document.getElementById('loading-box').classList.add("loaded")

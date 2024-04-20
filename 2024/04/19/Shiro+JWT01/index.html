@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Shiro整合JWT——01 | 你的友好邻居(｡•﹃•｡)</title><meta name="keywords" content="音乐 代码 摄影 生活"><meta name="author" content="Latitude_x"><meta name="copyright" content="Latitude_x"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="什么是Shiro？  定义：”Apache Shiro是一个强大且易用的Java安全框架，执行身份验证、授权、密码和会话管理”。  核心组件：  Subject：可以理解为”当前操作用户”  SecurityManager：Shiro框架的核心，执行”认证（Authentication）“、”授权（Authorization）“、”会话管理（Session Management）“、”加密（En">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shiro整合JWT——01">
+<meta property="og:url" content="http://example.com/2024/04/19/Shiro+JWT01/index.html">
+<meta property="og:site_name" content="你的友好邻居(｡•﹃•｡)">
+<meta property="og:description" content="什么是Shiro？  定义：”Apache Shiro是一个强大且易用的Java安全框架，执行身份验证、授权、密码和会话管理”。  核心组件：  Subject：可以理解为”当前操作用户”  SecurityManager：Shiro框架的核心，执行”认证（Authentication）“、”授权（Authorization）“、”会话管理（Session Management）“、”加密（En">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/au3.jpg">
+<meta property="article:published_time" content="2024-04-19T09:30:09.523Z">
+<meta property="article:modified_time" content="2024-04-19T09:29:39.848Z">
+<meta property="article:author" content="Latitude_x">
+<meta property="article:tag" content="音乐 代码 摄影 生活">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/au3.jpg"><link rel="shortcut icon" href="/img/horse.png"><link rel="canonical" href="http://example.com/2024/04/19/Shiro+JWT01/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/-apple-system,%20BlinkMacSystemFont,%20%22Segoe%20UI%22,%20%22Helvetica%20Neue%22,%20Lato,%20Roboto,%20%22PingFang%20SC%22,%20%22Microsoft%20JhengHei%22,%20%22Microsoft%20YaHei%22,%20sans-serif" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Shiro整合JWT——01',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-19 17:29:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lhr.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/au3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">你的友好邻居(｡•﹃•｡)</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Shiro整合JWT——01</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-19T09:30:09.523Z" title="发表于 2024-04-19 17:30:09">2024-04-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-19T09:29:39.848Z" title="更新于 2024-04-19 17:29:39">2024-04-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<h2 id="什么是Shiro？"><a href="#什么是Shiro？" class="headerlink" title="什么是Shiro？"></a>什么是Shiro？</h2><blockquote>
+<ol>
+<li><p>定义：”Apache Shiro是一个强大且易用的Java安全框架，执行身份验证、授权、密码和会话管理”。</p>
+</li>
+<li><p>核心组件：</p>
+<ul>
+<li><p>Subject：可以理解为”当前操作用户”</p>
+</li>
+<li><p>SecurityManager：Shiro框架的核心，执行”<strong>认证（Authentication）</strong>“、”<strong>授权（Authorization）</strong>“、”<strong>会话管理（Session Management）</strong>“、”<strong>加密（Encryption）</strong>“等操作</p>
+</li>
+<li><p>Realm：在定义的Realm中执行用户登录验证及权限验证</p>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p><strong>.ini文件</strong></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[users]</span></span><br><span class="line"><span class="attr">Jay</span>=Mojito,role1,role2</span><br><span class="line"><span class="attr">Ashin</span>=mayday</span><br><span class="line"></span><br><span class="line"><span class="section">[roles]</span></span><br><span class="line"><span class="attr">role1</span>=user:insert,user:select</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>自定义的Realm</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomerMD5Realm</span> <span class="keyword">extends</span> <span class="title class_">AuthorizingRealm</span> &#123;</span><br><span class="line">    <span class="comment">//授权</span></span><br><span class="line">    <span class="keyword">protected</span> AuthorizationInfo <span class="title function_">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principalCollection)</span> &#123;</span><br><span class="line">        <span class="comment">//从系统返回的身份信息集合中获取主身份信息（用户名）</span></span><br><span class="line"><span class="comment">/*        String primaryPrincaipal = principalCollection.getPrimaryPrincipal().toString();</span></span><br><span class="line"><span class="comment">        System.out.println(&quot;用户名：&quot;+primaryPrincaipal);*/</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//根据用户名获取当前用户的角色信息，以及权限信息</span></span><br><span class="line">        SimpleAuthorizationInfo simpleAuthorizationInfo=<span class="keyword">new</span> <span class="title class_">SimpleAuthorizationInfo</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//将数据库中查询角色信息赋值给权限对象</span></span><br><span class="line">        simpleAuthorizationInfo.addRole(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">        simpleAuthorizationInfo.addRole(<span class="string">&quot;user&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//将数据库中查询权限信息赋值给权限对象  资源标识符:操作:资源类型</span></span><br><span class="line">        simpleAuthorizationInfo.addStringPermission(<span class="string">&quot;user:*:01&quot;</span>);</span><br><span class="line">        simpleAuthorizationInfo.addStringPermission(<span class="string">&quot;product:creat&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> simpleAuthorizationInfo;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//认证</span></span><br><span class="line">    <span class="keyword">protected</span> AuthenticationInfo <span class="title function_">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken authenticationToken)</span> <span class="keyword">throws</span> AuthenticationException &#123;</span><br><span class="line">        <span class="comment">//从token中获取用户名</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">principal</span> <span class="operator">=</span> authenticationToken.getPrincipal().toString();</span><br><span class="line">        System.out.println(<span class="string">&quot;principal:&quot;</span>+principal);</span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> authenticationToken.getCredentials().toString();</span><br><span class="line">        System.out.println(<span class="string">&quot;token:&quot;</span>+token);</span><br><span class="line">        <span class="comment">//密码加密</span></span><br><span class="line">        Md5Hash md5Hash=<span class="keyword">new</span> <span class="title class_">Md5Hash</span>(<span class="string">&quot;123456&quot;</span>,<span class="string">&quot;qwe&quot;</span>,<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&quot;Jay&quot;</span>.equals(principal))&#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 用户名</span></span><br><span class="line"><span class="comment">             * 加密后的密码</span></span><br><span class="line"><span class="comment">             * 随机盐</span></span><br><span class="line"><span class="comment">             * 当前realm的名称</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">SimpleAuthenticationInfo</span>(</span><br><span class="line">                    principal,</span><br><span class="line">                    md5Hash.toString(),</span><br><span class="line">                    ByteSource.Util.bytes(<span class="string">&quot;qwe&quot;</span>),</span><br><span class="line">                    <span class="built_in">this</span>.getName()</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p><strong>测试类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomerMD5AuthenticatorTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//1.创建SecurityManager</span></span><br><span class="line">        DefaultSecurityManager defaultSecurityManager=<span class="keyword">new</span> <span class="title class_">DefaultSecurityManager</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.设置自定义Realm</span></span><br><span class="line">        CustomerMD5Realm customerMD5Realm=<span class="keyword">new</span> <span class="title class_">CustomerMD5Realm</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.为realm设置凭证匹配器</span></span><br><span class="line">        HashedCredentialsMatcher credentialsMatcher=<span class="keyword">new</span> <span class="title class_">HashedCredentialsMatcher</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.设置加密算法</span></span><br><span class="line">        credentialsMatcher.setHashAlgorithmName(<span class="string">&quot;md5&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.设置迭代次数</span></span><br><span class="line">        credentialsMatcher.setHashIterations(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//5.realm加载凭证匹配器</span></span><br><span class="line">        customerMD5Realm.setCredentialsMatcher(credentialsMatcher);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//6.设置自定义realm</span></span><br><span class="line">        defaultSecurityManager.setRealm(customerMD5Realm);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//7.给全局安全工具SecurityUtils设置安全管理器</span></span><br><span class="line">        SecurityUtils.setSecurityManager(defaultSecurityManager);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//8.获取当前subject</span></span><br><span class="line">        Subject subject= SecurityUtils.getSubject();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建token</span></span><br><span class="line">        UsernamePasswordToken token=<span class="keyword">new</span> <span class="title class_">UsernamePasswordToken</span>(<span class="string">&quot;Jay&quot;</span>,<span class="string">&quot;123456&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 登录认证</span></span><br><span class="line">            System.out.println(<span class="string">&quot;Start--------------------------&quot;</span>);</span><br><span class="line">            subject.login(token);</span><br><span class="line">            System.out.println(<span class="string">&quot;认证成功&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnknownAccountException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="string">&quot;用户名错误&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IncorrectCredentialsException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            System.out.println(<span class="string">&quot;密码错误&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;Ending------------------------&quot;</span>);</span><br><span class="line">        <span class="comment">//授权</span></span><br><span class="line">        <span class="keyword">if</span>(subject.isAuthenticated())&#123;</span><br><span class="line"><span class="comment">/*            //基于角色权限控制</span></span><br><span class="line"><span class="comment">            System.out.println(subject.hasRole(&quot;super&quot;));</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            //基于多角色权限控制（同时具有）</span></span><br><span class="line"><span class="comment">            System.out.println(subject.hasAllRoles(Arrays.asList(&quot;admin&quot;,&quot;super&quot;)));*/</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//是否具有其中一个角色</span></span><br><span class="line">            <span class="type">boolean</span>[] booleans=subject.hasRoles(Arrays.asList(<span class="string">&quot;admin&quot;</span>,<span class="string">&quot;super&quot;</span>,<span class="string">&quot;user&quot;</span>));</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">boolean</span> aBoolean : booleans) &#123;</span><br><span class="line">                System.out.println(aBoolean);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">&quot;=================================================&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//基于权限字符串的访问控制  资源标识符:操作:资源类型</span></span><br><span class="line">            System.out.println(<span class="string">&quot;权限：&quot;</span>+subject.isPermitted(<span class="string">&quot;user:update:01&quot;</span>));</span><br><span class="line">            System.out.println(<span class="string">&quot;权限：&quot;</span>+subject.isPermitted(<span class="string">&quot;product:create:02&quot;</span>));</span><br><span class="line"></span><br><span class="line">            <span class="comment">//分别具有那些权限</span></span><br><span class="line">            <span class="type">boolean</span>[] permitted = subject.isPermitted(<span class="string">&quot;user:*:01&quot;</span>, <span class="string">&quot;order:*:10&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">boolean</span> b : permitted) &#123;</span><br><span class="line">                System.out.println(b);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//同时具有那些权限</span></span><br><span class="line">            <span class="type">boolean</span> <span class="variable">permittedAll</span> <span class="operator">=</span> subject.isPermittedAll(<span class="string">&quot;user:*:01&quot;</span>, <span class="string">&quot;product:creat:10&quot;</span>);</span><br><span class="line">            System.out.println(permittedAll);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="什么是JWT？-JSON-Web-Token-入门教程-阮一峰的网络日志JSON-Web-Token-入门教程-阮一峰的网络日志"><a href="#什么是JWT？-JSON-Web-Token-入门教程-阮一峰的网络日志JSON-Web-Token-入门教程-阮一峰的网络日志" class="headerlink" title="[什么是JWT？](JSON Web Token 入门教程 - 阮一峰的网络日志JSON Web Token 入门教程 - 阮一峰的网络日志)"></a>[什么是JWT？](<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html">JSON Web Token 入门教程 - 阮一峰的网络日志</a><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html">JSON Web Token 入门教程 - 阮一峰的网络日志</a>)</h2><blockquote>
+<ol>
+<li><p>定义：Java web token（JWT），is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued.（用于在客户端和服务器两方之间共享安全信息。每个 JWT 都包含编码的 JSON 对象，包括一组声明。 JWT 使用加密算法进行签名，以确保在令牌发布后声明无法更改。）</p>
+</li>
+<li><p>传统的<strong>用户认证</strong>：</p>
+<ul>
+<li><p>用户向服务器发送用户名和密码。</p>
+</li>
+<li><p>服务器验证通过后，在当前对话（session）里面保存相关数据，比如用户角色、登录时间等等。</p>
+</li>
+<li><p>服务器向用户返回一个 session_id，写入用户的 Cookie。</p>
+</li>
+<li><p>用户随后的每一次请求，都会通过 Cookie，将 session_id 传回服务器。</p>
+</li>
+<li><p>服务器收到 session_id，找到前期保存的数据，进行用户跟踪。</p>
+</li>
+</ul>
+</li>
+<li><p>以上方法会出现的问题：<strong>跨域认证问题</strong>，即如果是服务器集群，需要session数据共享。这样会增加服务器压力，同时session数据同步需要时间成本。</p>
+<p>因此索性在服务器端不保存session数据，将所有数据都保存在客户端，每次请求都发回服务端。</p>
+</li>
+<li><p>JWT具体介绍见博客，介绍的很详细，不再赘述。<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html">JSON Web Token 入门教程 - 阮一峰的网络日志</a>。</p>
+</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<h3 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">Component</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JwtUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 过期时间改为从配置文件获取</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String accessTokenExpireTime;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * JWT认证加密私钥(Base64加密)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String encryptJWTKey;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;accessTokenExpireTime&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAccessTokenExpireTime</span><span class="params">(String accessTokenExpireTime)</span> &#123;</span><br><span class="line">        JwtUtil.accessTokenExpireTime = accessTokenExpireTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;encryptJWTKey&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setEncryptJWTKey</span><span class="params">(String encryptJWTKey)</span> &#123;</span><br><span class="line">        JwtUtil.encryptJWTKey = encryptJWTKey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 校验token是否正确</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> token Token</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> boolean 是否正确</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">verify</span><span class="params">(String token)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 帐号加JWT私钥解密</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">secret</span> <span class="operator">=</span> getClaim(token, Constant.ACCOUNT) + Base64ConvertUtil.decode(encryptJWTKey);</span><br><span class="line">            <span class="type">Algorithm</span> <span class="variable">algorithm</span> <span class="operator">=</span> Algorithm.HMAC256(secret);</span><br><span class="line">            <span class="type">JWTVerifier</span> <span class="variable">verifier</span> <span class="operator">=</span> JWT.require(algorithm).build();</span><br><span class="line">            verifier.verify(token);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            logger.error(<span class="string">&quot;JWTToken认证解密出现UnsupportedEncodingException异常:&#123;&#125;&quot;</span>, e.getMessage());</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CustomException</span>(<span class="string">&quot;JWTToken认证解密出现UnsupportedEncodingException异常:&quot;</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获得Token中的信息无需secret解密也能获得</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> token</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> claim</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getClaim</span><span class="params">(String token, String claim)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">DecodedJWT</span> <span class="variable">jwt</span> <span class="operator">=</span> JWT.decode(token);</span><br><span class="line">            <span class="comment">// 只能输出String类型，如果是其他类型返回null</span></span><br><span class="line">            <span class="keyword">return</span> jwt.getClaim(claim).asString();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (JWTDecodeException e) &#123;</span><br><span class="line">            logger.error(<span class="string">&quot;解密Token中的公共信息出现JWTDecodeException异常:&#123;&#125;&quot;</span>, e.getMessage());</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CustomException</span>(<span class="string">&quot;解密Token中的公共信息出现JWTDecodeException异常:&quot;</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成签名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> account 帐号</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String 返回加密的Token</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">sign</span><span class="params">(String account, String currentTimeMillis)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 帐号加JWT私钥加密</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">secret</span> <span class="operator">=</span> account + Base64ConvertUtil.decode(encryptJWTKey);</span><br><span class="line">            <span class="comment">// 此处过期时间是以毫秒为单位，所以乘以1000  此处就是设置过期时间</span></span><br><span class="line">            <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>(System.currentTimeMillis() + Long.parseLong(accessTokenExpireTime) * <span class="number">1000</span>);</span><br><span class="line">            <span class="type">Algorithm</span> <span class="variable">algorithm</span> <span class="operator">=</span> Algorithm.HMAC256(secret);</span><br><span class="line">            <span class="comment">// 附带account帐号信息</span></span><br><span class="line">            <span class="keyword">return</span> JWT.create()</span><br><span class="line">                    .withClaim(<span class="string">&quot;account&quot;</span>, account)   <span class="comment">//进行声明</span></span><br><span class="line">                    .withClaim(<span class="string">&quot;currentTimeMillis&quot;</span>, currentTimeMillis)    <span class="comment">//进行声明</span></span><br><span class="line">                    .withExpiresAt(date)</span><br><span class="line">                    .sign(algorithm);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            logger.error(<span class="string">&quot;JWTToken加密出现UnsupportedEncodingException异常:&#123;&#125;&quot;</span>, e.getMessage());</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CustomException</span>(<span class="string">&quot;JWTToken加密出现UnsupportedEncodingException异常:&quot;</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Latitude_x</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/04/19/Shiro+JWT01/">http://example.com/2024/04/19/Shiro+JWT01/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">你的友好邻居(｡•﹃•｡)</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/au3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/"><img class="next-cover" src="/img/au4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux部署Redis过程中踩的坑</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lhr.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Latitude_x</div><div class="author-info__description">一个捕捉生活痕迹的小站ヾ(⌐ ■_■)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.bilibili.com/"><i class="fab"></i><span>bilibili（ ゜- ゜）つロ 干杯~</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">时间都停了 他们都回来了﻿:-)</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFShiro%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是Shiro？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">基本使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJWT%EF%BC%9F-JSON-Web-Token-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-%E9%98%AE%E4%B8%80%E5%B3%B0%E7%9A%84%E7%BD%91%E7%BB%9C%E6%97%A5%E5%BF%97JSON-Web-Token-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-%E9%98%AE%E4%B8%80%E5%B3%B0%E7%9A%84%E7%BD%91%E7%BB%9C%E6%97%A5%E5%BF%97"><span class="toc-number">2.</span> <span class="toc-text">[什么是JWT？](JSON Web Token 入门教程 - 阮一峰的网络日志JSON Web Token 入门教程 - 阮一峰的网络日志)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-1"><span class="toc-number">2.1.</span> <span class="toc-text">基本使用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01"><img src="/img/au3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——01"/></a><div class="content"><a class="title" href="/2024/04/19/Shiro+JWT01/" title="Shiro整合JWT——01">Shiro整合JWT——01</a><time datetime="2024-04-19T09:30:09.523Z" title="发表于 2024-04-19 17:30:09">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑"><img src="/img/au4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux部署Redis过程中踩的坑"/></a><div class="content"><a class="title" href="/2024/04/19/redis%E9%83%A8%E7%BD%B2%E7%9B%B8%E5%85%B3/" title="Linux部署Redis过程中踩的坑">Linux部署Redis过程中踩的坑</a><time datetime="2024-04-19T09:29:18.016Z" title="发表于 2024-04-19 17:29:18">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro整合JWT——02"/></a><div class="content"><a class="title" href="/2024/04/19/Shiro+JWT02/" title="Shiro整合JWT——02">Shiro整合JWT——02</a><time datetime="2024-04-19T09:29:09.947Z" title="发表于 2024-04-19 17:29:09">2024-04-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring"><img src="/img/au5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring"/></a><div class="content"><a class="title" href="/2023/09/19/Spring%E9%9D%A2%E7%BB%8F/" title="Spring">Spring</a><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关"><img src="/img/au7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="web相关"/></a><div class="content"><a class="title" href="/2023/09/19/Web/web%E7%9B%B8%E5%85%B3/" title="web相关">web相关</a><time datetime="2023-09-19T09:31:59.949Z" title="发表于 2023-09-19 17:31:59">2023-09-19</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/land2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Latitude_x</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'http://example.com/2024/04/19/Shiro+JWT01/'
+    this.page.identifier = '2024/04/19/Shiro+JWT01/'
+    this.page.title = 'Shiro整合JWT——01'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lee.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Valine' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="哈,哈,哈" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
